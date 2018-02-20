@@ -23,7 +23,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar {
-  background: image_url('polka-dots.png');
+  background: image_url('footer_lodyas.png');
   // box-shadow: 0px 1px 3px #2a2a2a;
   box-shadow: 0px 3px 7px #202020;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #C3DDE6;
+  font-family: 'acherus_grotesque_-_regular', sans-serif;
+  font-size: 1.5rem;
 }
