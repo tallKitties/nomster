@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'popper_js', '~> 1.11.1'
+gem 'simple_form'
 gem 'will_paginate', '~> 3.1.1'
 
 source 'https://rails-assets.org' do
