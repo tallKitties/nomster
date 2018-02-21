@@ -13,6 +13,6 @@ module Nomster
     # -- all .rb files in that directory are automatically loaded.
 
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
-    config.assets.precompile += %w( .svg .eot .woff .ttf )
+    config.assets.precompile += %w[.svg .eot .woff .woff2 .ttf]
   end
 end
