@@ -5,3 +5,4 @@
     <p><%= place.description %></p><br>
   </div>
 <% end %>
+<%= will_paginate(@places, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'row justify-content-center no-gutters') %>

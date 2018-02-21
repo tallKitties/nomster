@@ -5,7 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+gem 'bootstrap', '4.0.0.alpha6'
+gem 'bootstrap-will_paginate'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.6'
 # Use postgresql as the database for Active Record
@@ -32,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'popper_js', '~> 1.11.1'
-gem 'bootstrap', '4.0.0.alpha6'
+gem 'will_paginate', '~> 3.1.1'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
