@@ -15,10 +15,18 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @place = Place.find(params[:id])
+    @place = find_place
+  end
+
+  def edit
+    @place = find_place
   end
 
   private
+
+  def find_place
+    Place.find(params[:id])
+  end
 
   def place_params
     params.require(:place).permit(:name, :description, :address)
