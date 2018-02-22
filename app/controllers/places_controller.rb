@@ -28,6 +28,12 @@ class PlacesController < ApplicationController
     redirect_to place_path(@place)
   end
 
+  def destroy
+    @place = find_place
+    @place.destroy
+    redirect_to root_path
+  end
+
   private
 
   def find_place
