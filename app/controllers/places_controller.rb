@@ -22,6 +22,12 @@ class PlacesController < ApplicationController
     @place = find_place
   end
 
+  def update
+    @place = find_place
+    @place.update_attributes(place_params)
+    redirect_to place_path(@place)
+  end
+
   private
 
   def find_place
