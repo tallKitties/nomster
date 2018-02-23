@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @places = Place.all.paginate(page: params[:page], per_page: 5)
@@ -20,10 +20,19 @@ class PlacesController < ApplicationController
 
   def edit
     @place = find_place
+    if @place.user != current_user
+      flash[:error] = "You do not have valid credentials to edit #{@place.name}"
+      redirect_to place_path
+    end
   end
 
   def update
     @place = find_place
+
+    if @place.user != current_user
+      return render plain: 'Not Allowed', status: :forbidden
+    end
+
     @place.update_attributes(place_params)
     redirect_to place_path(@place)
   end
