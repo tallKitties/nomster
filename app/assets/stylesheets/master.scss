@@ -31,6 +31,12 @@ a:hover {
   padding: 20px;
 }
 
+@media (min-width: 376px){
+  .details-container {
+    padding: 0 35px 0 35px;
+  }
+}
+
 .help-block {
   color: #ff3333;
   background-color: #ffeeee;
@@ -50,3 +56,10 @@ a:hover {
   font-size: 1.5rem;
 }
 
+.place-details {
+  padding-top: 10px;
+}
+
+#map {
+  height: 300px;
+}

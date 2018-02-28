@@ -1,14 +1,43 @@
 <div class="booyah-box col-10 offset-1">
   <h1><%= @place.name %></h1>
-  <i><%= @place.address %></i>
   <br>
-  <br>
-  <p><%= @place.description %></p>
-  <div class="float-right ">
-    <% if current_user && current_user == @place.user %>
-      <%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>
-      <%= link_to 'Delete', place_path(@place), method: :delete, data: {confirm: "Are you sure you want to delete #{@place.name}?"}, class: 'btn btn-danger' %>
+  <div class="details-container">
+    <i class="place-details"><%= @place.address %></i>
+    <br>
+    <p class="place-details"><%= @place.description %></p>
+
+    <% if @place.latitude.present? && @place.longitude.present? %>
+      <script>
+        function initMap() {
+          var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
+
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: myLatLng
+          });
+
+          var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+          });
+        }
+      </script>
+
+      <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9GIDFoyNMwxaoOOugCP-lQIg7M_b6x_c&callback=initMap">
+      </script>
+
+      <div class="place-details" id="map"></div>
     <% end %>
+    
+    <hr>
+    <div class="float-right ">
+      <% if current_user && current_user == @place.user %>
+        <%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>
+        <%= link_to 'Delete', place_path(@place), method: :delete, data: {confirm: "Are you sure you want to delete #{@place.name}?"}, class: 'btn btn-danger' %>
+      <% end %>
+    </div>
+    <span class="clearfix"></span>
   </div>
-  <span class="clearfix"></span>
 </div>
