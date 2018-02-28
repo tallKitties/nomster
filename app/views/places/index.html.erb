@@ -1,12 +1,13 @@
 <% @places.each do |place| %>
   <div class="booyah-box col-10 offset-1">
-    <h1><%= link_to place.name, place_path(place) %></h1><br>
-    <i><%= place.address %></i><br><br>
-    <p><%= place.description %></p><br>
-
-    <% if place.user.present? %>
-      <small><%= place.user.email %></small>
-    <% end %>
+    <h1><%= link_to place.name, place_path(place) %></h1><hr>
+    <div class="details-container">
+      <i class="place-details"><%= place.address %></i><br>
+      <p class="place-details"><%= place.description %></p><br>
+      <% if place.user.present? %>
+        <small><%= place.user.email %></small>
+      <% end %>
+    </div>
   </div>
 <% end %>
 <%= will_paginate(@places, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'row justify-content-center no-gutters') %>
