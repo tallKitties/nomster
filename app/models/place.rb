@@ -7,4 +7,5 @@ class Place < ApplicationRecord
   validates :name, length: { minimum: 4 }
 
   has_many :comments
+  has_many :photos
 end
