@@ -44,9 +44,15 @@
     <h1 class="float-left">Photos</h1>
     <span class="clearfix"></span>
 
-    <%= simple_form_for @photo, url: '#' do |f| %>
+    <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
       <%= f.input :caption %>
       <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
+    <% end %>
+    <br>
+    <% @place.photos.each do |photo| %>
+      <%= photo.caption %>
+      <small class="float-right"><%= photo.user.email %></small>
+      <span class="clearfix"></span>
     <% end %>
     <hr>
 
