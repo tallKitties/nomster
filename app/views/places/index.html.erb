@@ -2,6 +2,10 @@
   <div class="booyah-box col-10 offset-1">
     <h1><%= link_to place.name, place %></h1><hr>
     <div class="details-container">
+      <% if place.photos.present? %>
+        <div class="banner-photo" style="background-image: url('<%= place.photos.last.picture.url %>');"></div>
+        <br>
+      <% end %>
       <i class="place-details"><%= place.address %></i><br>
       <p class="place-details"><%= place.description %></p><br>
 
