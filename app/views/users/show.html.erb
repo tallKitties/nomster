@@ -1,9 +1,9 @@
-<div class="booyah-box col-10 offset-1 container">
-  <div class="row">
-    <div class="col-4">
-      <%= image_tag 'user.png' %>
+<div class="col-10 offset-1">
+  <div class="booyah-box row">
+    <div class="col-sm-4 col-12">
+      <%= image_tag 'user.png', class: 'img_fluid' %>
     </div>
-    <div class="col-8">
+    <div class="col-sm-8 col-12">
       <h1><%= @user.email %></h1>
       <h3>Member Since: <%= @user.created_at.strftime("%B %d, %Y") %></h3>
       <h4><%= @user.places.count %> total places added.</h4>
@@ -11,5 +11,25 @@
       <h4><%= @user.comments.where(rating: '5_stars').count %> total 5 star reviews.</h4>
     </div>
   </div>
-  <span class="clearfix"></span>
+
+  <div class="booyah-box row">
+    <div class="col-12">
+      <h1 class="text-center">My Comments</h1>
+      <hr>
+    </div>      
+    <% @user.comments.each do |comment| %>
+      <div class="col-12 col-sm-6">
+        <h4 class="text-center"><%= link_to comment.place.name, place_path(comment.place) %></h4>
+        <blockquote>
+          <% if comment.humanized_rating.present? %>
+            <b><%= comment.humanized_rating %></b> - 
+          <% end %>
+          <%= comment.message %>
+          <small class="float-right">~ <%= comment.user.email %></small>
+          <span class="clearfix"></span>
+        </blockquote>
+      </div>
+    <% end %>
+  </div>
 </div>
+<span class="clearfix"></span>
