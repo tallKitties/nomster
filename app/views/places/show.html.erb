@@ -72,7 +72,8 @@
               <b><%= comment.humanized_rating %></b> - 
             <% end %>
             <%= comment.message %>
-            <small><%= comment.user.email %></small>
+            <small class="float-right">~ <%= comment.user.email %></small>
+            <span class="clearfix"></span>
           </blockquote>
         </div>
       <% end %>
