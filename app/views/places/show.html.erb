@@ -50,8 +50,7 @@
         <%= image_tag photo.picture, class: "mx-auto d-block rounded place-photo" %>
         <br>
         <h4 class="text-center"><%= "\"#{photo.caption}\"" %></h4>
-        <footer class="blockquote-footer text-right"><%= photo.user.email %></footer>
-        <span class="clearfix"></span>
+        <span class="blockquote-footer text-right"><%= photo.user.email %></span>
         <hr>
       <% end %>
     <% end %>

@@ -46,7 +46,7 @@
       <p class="place-details"><%= place.description %></p><br>
 
       <% if place.user.present? %>
-        <footer class="blockquote-footer text-right"><%= place.user.email %></footer>
+        <span class="blockquote-footer text-right"><%= place.user.email %></span>
       <% end %>
 
       <% if place.comments.present? %>

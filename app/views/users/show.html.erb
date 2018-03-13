@@ -12,18 +12,20 @@
         <ul class="text-left">
           <li>
             <h4>Places added: <span class="float-right"><%= @user.places.count %></span></h4>
+            <span class="clearfix"></span>
           </li>
           <li>
             <h4>Comments: <span class="float-right"><%= @user.comments.count %></span></h4>
+            <span class="clearfix"></span>
           </li>
           <li>
             <h4>5-star reviews: <span class="float-right pl-3"><%= @user.comments.where(rating: '5_stars').count %></span></h4>
+            <span class="clearfix"></span>
           </li>
         </ul>
       </div>
     </div>
   </div>
-  <span class="clearfix"></span>
 
   <div class="booyah-box row">
     <div class="col-12">
@@ -37,7 +39,7 @@
         <p><%= place.description %></p><br />
 
         <% if place.user.present? %>
-          <small><%= place.user.email %></small>
+          <span class="blockquote-footer text-right"><%= place.user.email %></span>
         <% end %>
 
         <% if place.comments.present? %>
@@ -47,14 +49,13 @@
                 <b><%= place.comments.last.humanized_rating %></b> -
               <% end %>
               <%= place.comments.last.message %>
-              <small><%= place.comments.last.user.email %></small>
+              <footer class="blockquote-footer text-right"><%= place.comments.last.user.email %></footer>
             </blockquote>
           </div>
         <% end %>
       </div>
     <% end %>
   </div>
-  <span class="clearfix"></span>
 
   <div class="booyah-box row">
     <div class="col-12">
@@ -74,5 +75,4 @@
       </div>
     <% end %>
   </div>
-  <span class="clearfix"></span>
 </div>
