@@ -83,23 +83,26 @@
         <hr>
       </div>
 
-      <% @user.places.each do |place| %>
-        <% users_photo_for_place = place.photos.where(user_id: @user.id) %>
+      <% photos_grouped_by_place = @user.photos.group_by do |p| %>
+        <% p.place_id %>
+      <% end %>
 
-        <% if users_photo_for_place.present? %>
-          <h4 class="col-12 text-center">
-            <%= link_to place.name, place_path(place) %>
-          </h4>
-          <br><br>
+      <% photos_grouped_by_place.keys.each do |key| %>
+        <% current_place = Place.find(key) %>
+        <% photos_for_place = photos_grouped_by_place[key] %>
 
-          <% users_photo_for_place.each do |photo| %>
-            <div class="col-12 col-sm-6">
-              <%= image_tag photo.picture, class: "mx-auto d-block rounded place-photo" %>
-              <h4 class="text-center"><%= "\"#{photo.caption}\"" %></h4>
-            </div>
-          <% end %>
-          <span class="col-10 offset-1"><hr></span>
+        <h4 class="col-12 text-center">
+          <%= link_to current_place.name, place_path(current_place) %>
+        </h4>
+        <br>
+        <br>
+        <% photos_for_place.each do |photo| %>
+          <div class="col-12 col-sm-6">
+            <%= image_tag photo.picture, class: "mx-auto d-block rounded place-photo" %>
+            <h4 class="text-center"><%= "\"#{photo.caption}\"" %></h4>
+          </div>
         <% end %>
+        <span class="col-10 offset-1"><hr></span>
       <% end %>
     </div>
   <% end %>
