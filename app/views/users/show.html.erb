@@ -75,4 +75,33 @@
       </div>
     <% end %>
   </div>
+
+  <% if @user.photos.present? %>
+    <div class="booyah-box row">
+      <div class="col-12">
+        <h1 class="text-center">My Photos</h1>
+        <hr>
+      </div>
+
+      <% @user.places.each do |place| %>
+        <% users_photo_for_place = place.photos.where(user_id: @user.id) %>
+
+        <% if users_photo_for_place.present? %>
+          <h4 class="col-12 text-center">
+            <%= link_to place.name, place_path(place) %>
+          </h4>
+          <br><br>
+
+          <% users_photo_for_place.each do |photo| %>
+            <div class="col-12 col-sm-6">
+              <%= image_tag photo.picture, class: "mx-auto d-block rounded place-photo" %>
+              <h4 class="text-center"><%= "\"#{photo.caption}\"" %></h4>
+            </div>
+          <% end %>
+          <span class="col-10 offset-1"><hr></span>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
 </div>
