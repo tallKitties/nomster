@@ -46,7 +46,7 @@
       <p class="place-details"><%= place.description %></p><br>
 
       <% if place.user.present? %>
-        <small><%= place.user.email %></small>
+        <footer class="blockquote-footer text-right"><%= place.user.email %></footer>
       <% end %>
 
       <% if place.comments.present? %>
@@ -56,7 +56,7 @@
               <b><%= place.comments.last.humanized_rating %></b> - 
             <% end %>
             <%= place.comments.last.message %>
-            <small><%= place.comments.last.user.email %></small>
+            <footer class="blockquote-footer text-right"><%= place.comments.last.user.email %></footer>
           </blockquote>
         </div>
       <% end %>

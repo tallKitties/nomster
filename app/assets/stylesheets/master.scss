@@ -118,8 +118,52 @@ blockquote p {
   padding-top: 10px;
 }
 
-.place-photo {
-  height: 400px;
+.profile-info > ul {
+  width: 300px;
+}
+
+.header-border-bottom {
+  border: 2px solid #444;
+  margin: 20px 10% 20px 10%;
+}
+
+.profile-info {
+  h3 {
+    font-size: 1.2rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .profile-info {
+    h3 {
+      font-size: 1.5rem;
+    }
+    h4 {
+      font-size: 1.2rem;
+    }
+    .icon-container > .header-border-bottom {
+      border: none;
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .profile-info {
+    h3 {
+      font-size: 1.75rem;
+    }
+    h4 {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.user-icon {
+  max-width: 100%;
+  max-height: 200px;
 }
 
 #map {
